@@ -51,7 +51,7 @@ def add_asset(): #adds asset to inventory_file
     inventroy_data = [[asset, ritm, shipped, check_in, in_out]]
     df2 = pd.DataFrame(inventroy_data, columns= ['Asset', 'RITM', 'Shipped', 'Date', 'In/Out'])
     df2.to_csv(inventory_file, mode='a', header=None, index=False) 
-    df2.close_csv()
+
 
 if __name__ in '__main__':
     while True:
