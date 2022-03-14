@@ -11,22 +11,22 @@ inventory_file = r"C:\Users\Zach\Documents\Asset Tracker\inventory_tracker.txt"
 shipping_file = r"C:\Users\Zach\Documents\Asset Tracker\shipment_tracker.txt"
 
 data = pd.read_csv(inventory_file)
-df = pd.DataFrame(data, columns= ['asset', 'ritm', 'shipped', 'in/out', 'date'])
+df = pd.DataFrame(data, columns= ['asset', 'date'])
 
 def search_asset_remove(asset_to_remove): #searches for asset given in shipping function then deletes it from inventory_file
-    df = pd.DataFrame(data, columns= ['asset', 'ritm', 'shipped', 'in/out', 'date'])
+    df = pd.DataFrame(data, columns= ['asset', 'date'])
     df = df[df["asset"].str.contains(asset_to_remove)==True]
     df.to_csv(inventory_file, index=False)    
 
 def remove_asset(): #removes asset from inventory_file
     asset_to_remove = input("Asset checking out: ")
-    df = pd.DataFrame(data, columns= ['asset', 'ritm', 'shipped', 'in/out', 'date'])
+    df = pd.DataFrame(data, columns= ['asset', 'date'])
     df = df[df["asset"].str.contains(asset_to_remove)==True]
     df.to_csv(inventory_file, index=False) 
 
 def show_inventory(): #shows what is currently in stock
     data = pd.read_csv(inventory_file)
-    df = pd.DataFrame(data, columns= ['asset', 'ritm', 'shipped', 'in/out', 'date'])
+    df = pd.DataFrame(data, columns= ['asset', 'date'])
     print(df)
 
 def shipping(): #places info in shipping_file and then calls 'search_asset_remove' to remove from inventory file
@@ -43,13 +43,10 @@ def shipping(): #places info in shipping_file and then calls 'search_asset_remov
 
 def add_asset(): #adds asset to inventory_file
     asset = input("Asset: ") 
-    ritm = input("RITM: ")
-    shipped = input("Shipped?: ")
-    check_in = input("Date check in/out: ")  
-    in_out = input("IN or OUT?: ")
+    check_in = input("Date check in: ")  
 
     inventroy_data = [[asset, ritm, shipped, check_in, in_out]]
-    df2 = pd.DataFrame(inventroy_data, columns= ['Asset', 'RITM', 'Shipped', 'Date', 'In/Out'])
+    df2 = pd.DataFrame(inventroy_data, columns= ['Asset', 'Date',])
     df2.to_csv(inventory_file, mode='a', header=None, index=False) 
 
 

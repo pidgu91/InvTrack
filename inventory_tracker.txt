@@ -1,3 +1,3 @@
-asset,ritm,shipped,in/out,date
-9016638,RITM1234,NO,3/12/22,IN
+asset,date
+9016638,3/7/22
 
